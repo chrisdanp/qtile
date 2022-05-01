@@ -61,7 +61,13 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     Key([mod], "b", lazy.spawn("google-chrome"), desc="Open chrome"),
     Key([mod], "d", lazy.spawn("discord"), desc="Open Discord"),
-    Key([mod], "p", lazy.spawn("opt/foxitsoftware/foxitreader/FoxitReader"), desc="Open FoxitReader"),
+    Key([mod], "p", lazy.spawn("xournalpp"), desc="Open xournal (pdf-reader)"),
+    Key([mod], "z", lazy.spawn("zoom"), desc="Open Zoom"),
+    Key([mod], "v", lazy.spawn("pavucontrol"), desc="Open pavucontrol (volume gui)"),
+    Key([mod], "d", lazy.spawn("discord"), desc="Open discord"), 
+    Key([mod], "Print", lazy.spawn("import -window root Images/capture.png"), desc="Take a screenshot"),
+    #Key([], "Print", lazy.spawn("import -window root Images/cutcapture.png && import Images/cutcapture.png"), desc="Cut the screnshot"),
+    
     # multiple stack panes
     Key(
         [mod, "shift"],
@@ -69,7 +75,7 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    Key([mod], "Return", lazy.spawn("alacritty -o font.size=10"), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("alacritty -o font.size=9"), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
@@ -231,6 +237,11 @@ screens = [
                        background = colors[7],
                        fmt = 'Vol: {}',
                        padding = 5
+                       ),
+                widget.Battery(
+                       foreground = colors[0],
+                       background = colors[8],
+                       format= 'Battery: {percent: 2.0%}'
                        ),
                 widget.Clock(
                        foreground = colors[1],
